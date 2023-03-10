@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForceAdding : MonoBehaviour
 {
-
+    [SerializeField] private TrajectoryRenderer renderer;
     private float startTime;
     private const float MAX_TIME =5;
 
@@ -20,6 +20,12 @@ public class ForceAdding : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().AddForce(GetForceVector(),
                                                           ForceMode.Impulse);
             startTime = 0;
+            renderer.ClearTraectory();
+        }
+
+        if(startTime != 0)
+        {
+            renderer.ShowTrajectory(gameObject.transform.position, GetForceVector());
         }
     }
 
