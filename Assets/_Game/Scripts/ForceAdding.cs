@@ -21,6 +21,7 @@ public class ForceAdding : MonoBehaviour
                                                           ForceMode.Impulse);
             startTime = 0;
             renderer.ClearTraectory();
+            gameObject.GetComponent<ForceAdding>().enabled = false;
         }
 
         if(startTime != 0)
