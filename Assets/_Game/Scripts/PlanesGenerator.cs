@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class PlanesGenerator
 {
-    private static Queue<GameObject> planes = new Queue<GameObject>();
+    private static List<GameObject> planes = new List<GameObject>();
 
     public static void GenerateNextPanel()
     {
@@ -14,14 +14,10 @@ public static class PlanesGenerator
         var obj = MonoBehaviour.Instantiate(prefab, new Vector3(curPosition.x + Random.Range(1,5),
                                                                 curPosition.y + Random.Range(1, 5),
                                                                 curPosition.z + Random.Range(40, 60)), new Quaternion());
-        var enteredEvent = new UnityEngine.Events.UnityEvent();
+        var enteredEvent = new UnityGameObjectEvent();
         enteredEvent.AddListener(player.GetComponent<CheckLanding>().OnWin);
         obj.GetComponent<EntryZoneComponent>().SetZoneEnteredEvent(enteredEvent);
-        planes.Enqueue(obj);
+        planes.Add(obj);
 
-        while(planes.Count > 3)
-        {
-            MonoBehaviour.Destroy(planes.Dequeue());
-        }
     }
 }

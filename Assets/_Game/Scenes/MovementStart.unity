@@ -513,10 +513,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1079129759}
         m_TargetAssemblyTypeName: CheckLanding, Assembly-CSharp
         m_MethodName: OnLose
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 382389454}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -826,10 +826,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1079129759}
         m_TargetAssemblyTypeName: CheckLanding, Assembly-CSharp
         m_MethodName: OnLose
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 594341372}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2094,6 +2094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 156310119}
+  PrevCollider: {fileID: 0}
 --- !u!114 &1079129760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2273,10 +2274,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1079129759}
         m_TargetAssemblyTypeName: CheckLanding, Assembly-CSharp
         m_MethodName: OnWin
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1157165858}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
