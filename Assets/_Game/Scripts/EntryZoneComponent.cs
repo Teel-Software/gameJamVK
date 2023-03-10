@@ -7,12 +7,12 @@ using UnityEngine.Serialization;
 public class EntryZoneComponent : MonoBehaviour
 {
     [SerializeField] private Collider _triggerZone;
-    [SerializeField] private UnityEvent _onEnteredZone;
+    [SerializeField] private UnityGameObjectEvent _onEnteredZone;
     [SerializeField] private Color _color = Color.green;
 
     private bool IsZoneTrigger => _triggerZone.isTrigger;
 
-    public void SetZoneEnteredEvent(UnityEvent myEvent)
+    public void SetZoneEnteredEvent(UnityGameObjectEvent myEvent)
     {
         _onEnteredZone = myEvent;
     }
@@ -27,7 +27,7 @@ public class EntryZoneComponent : MonoBehaviour
     {
         if (!IsZoneTrigger)
         {
-            _onEnteredZone.Invoke();
+            _onEnteredZone.Invoke(gameObject);
             Debug.Log("Collision");
         }
     }
@@ -36,7 +36,7 @@ public class EntryZoneComponent : MonoBehaviour
     {
         if (IsZoneTrigger)
         {
-            _onEnteredZone.Invoke();
+            _onEnteredZone.Invoke(other.gameObject);
             Debug.Log("Trigger");
         }
     }
@@ -50,4 +50,9 @@ public class EntryZoneComponent : MonoBehaviour
             Gizmos.DrawCube(winZoneBounds.center, winZoneBounds.size * 1.01f);
         }
     }
+}
+
+[Serializable]
+public class UnityGameObjectEvent : UnityEvent<GameObject>
+{
 }
