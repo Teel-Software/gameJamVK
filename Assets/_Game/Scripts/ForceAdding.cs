@@ -15,12 +15,13 @@ public class ForceAdding : MonoBehaviour
             startTime = Time.time;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && startTime != 0)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(GetForceVector(),
                                                           ForceMode.Impulse);
             startTime = 0;
             renderer.ClearTraectory();
+            gameObject.GetComponent<ForceAdding>().enabled = false;
         }
 
         if(startTime != 0)
