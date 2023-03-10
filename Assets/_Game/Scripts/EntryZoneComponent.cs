@@ -12,6 +12,11 @@ public class EntryZoneComponent : MonoBehaviour
 
     private bool IsZoneTrigger => _triggerZone.isTrigger;
 
+    public void SetZoneEnteredEvent(UnityEvent myEvent)
+    {
+        _onEnteredZone = myEvent;
+    }
+
     private void Awake()
     {
         if (_triggerZone == null)
