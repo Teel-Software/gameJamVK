@@ -8,14 +8,14 @@ public class FlyControlling : MonoBehaviour
     public void OnRightClick()
     {
         if (gameObject.GetComponent<ForceAdding>().enabled == false)
-            gameObject.GetComponent<Rigidbody>().AddForce(GetVector(1), ForceMode.Force);
+            gameObject.GetComponent<Rigidbody>().AddForce(GetVector(-1), ForceMode.Force);
     }
 
     public void OnLeftClick()
     {
         if (gameObject.GetComponent<ForceAdding>().enabled == false)
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(GetVector(-1), ForceMode.Force);
+            gameObject.GetComponent<Rigidbody>().AddForce(GetVector(1), ForceMode.Force);
         }
     }
 
