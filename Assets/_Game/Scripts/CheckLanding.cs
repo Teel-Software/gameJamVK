@@ -12,8 +12,9 @@ public class CheckLanding : MonoBehaviour
     {
         startPos.position = transform.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
-        if(!PrevCollider.Equals(collider))
-            PlanesGenerator.GenerateNextPanel();
+        gameObject.GetComponent<FlyControlling>().enabled = false;
+        if (!PrevCollider.Equals(collider))
+        PlanesGenerator.GenerateNextPanel();
         PrevCollider = collider;
     }
 
@@ -24,5 +25,6 @@ public class CheckLanding : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         gameObject.transform.position = startPos.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
+        gameObject.GetComponent<FlyControlling>().enabled = false;
     }
 }
