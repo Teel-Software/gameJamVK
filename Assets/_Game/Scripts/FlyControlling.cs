@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class FlyControlling : MonoBehaviour
 {
     private Rigidbody physics;
+    [SerializeField] TMP_Text text;
 
     private void Start()
     {
@@ -14,9 +16,13 @@ public class FlyControlling : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && physics.velocity.y <= 0)
+        bool phonePress = Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Stationary);
+        text.text = ((phonePress || Input.GetMouseButton(0)) && physics.velocity.y <= 0).ToString();
+
+        if ((phonePress || Input.GetMouseButton(0)) && physics.velocity.y <= 0)
         {
-            physics.AddForce(new Vector3(0,0.02f,0f), ForceMode.Impulse);
+            text.text = "entered";
+            physics.AddForce(new Vector3(0,1f,0f), ForceMode.Impulse);
         }
     }
 
