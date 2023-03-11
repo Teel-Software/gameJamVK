@@ -4,18 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyControlling : MonoBehaviour
-{ 
+{
+    private Rigidbody physics;
+
+    private void Start()
+    {
+        physics = gameObject.GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButton(0) && physics.velocity.y <= 0)
+        {
+            physics.AddForce(new Vector3(0,0.02f,0f), ForceMode.Impulse);
+        }
+    }
+
     public void OnRightClick()
     {
         if (gameObject.GetComponent<ForceAdding>().enabled == false)
-            gameObject.GetComponent<Rigidbody>().AddForce(GetVector(-1), ForceMode.Force);
+            physics.AddForce(GetVector(-1), ForceMode.Force);
     }
 
     public void OnLeftClick()
     {
         if (gameObject.GetComponent<ForceAdding>().enabled == false)
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(GetVector(1), ForceMode.Force);
+            physics.AddForce(GetVector(1), ForceMode.Force);
         }
     }
 

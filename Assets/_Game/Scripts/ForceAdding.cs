@@ -21,6 +21,7 @@ public class ForceAdding : MonoBehaviour
                                                           ForceMode.Impulse);
             startTime = 0;
             renderer.ClearTraectory();
+            gameObject.GetComponent<FlyControlling>().enabled = true;
             gameObject.GetComponent<ForceAdding>().enabled = false;
         }
 
@@ -43,7 +44,8 @@ public class ForceAdding : MonoBehaviour
     public float GetForcePercent()
     {
         if (startTime == 0) return 0;
-        if (Time.time - startTime > MAX_TIME) return 1;
-        return (Time.time - startTime) / MAX_TIME;
+        float percent = (Time.time - startTime) / MAX_TIME;
+        if ((int)percent % 2 == 0) return percent - (int)percent;
+        return 1 - (percent - (int)percent);
     }
 }
