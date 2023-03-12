@@ -5,7 +5,6 @@ using UnityEngine;
 public class CheckLanding : MonoBehaviour
 {
     [SerializeField] private Transform startPos;
-    [SerializeField] private GameObject losePanel;
     public GameObject PrevCollider = null;
     
     public int ScoreCount { get; private set; }
@@ -45,9 +44,7 @@ public class CheckLanding : MonoBehaviour
         Debug.Log("lose");
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        //gameObject.transform.position = startPos.position;
-        Time.timeScale = 0;
-        losePanel.SetActive(true);
+        gameObject.transform.position = startPos.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
         gameObject.GetComponent<FlyControlling>().enabled = false;
     }
