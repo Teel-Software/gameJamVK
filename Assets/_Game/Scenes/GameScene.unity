@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17320763, g: 0.2164936, b: 0.2985254, a: 1}
+  m_IndirectSpecularColor: {r: 0.17320754, g: 0.21649334, b: 0.29852533, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -248,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 419774350}
   - component: {fileID: 419774349}
+  - component: {fileID: 419774351}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -332,6 +333,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 98.4, y: 0, z: 0}
+--- !u!114 &419774351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419774348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1169876805
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +519,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2597261031396532042, guid: f8abf9cd865ad7844bead8046876c705, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00d80bb52b08c3a49b667a63e7b61980, type: 2}
     - target: {fileID: 3089542127623149979, guid: f8abf9cd865ad7844bead8046876c705, type: 3}
       propertyPath: m_RootOrder
       value: 4
