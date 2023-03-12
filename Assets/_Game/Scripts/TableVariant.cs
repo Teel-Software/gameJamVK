@@ -2,6 +2,8 @@
 
 public class TableVariant : MonoBehaviour
 {
-    public GameObject  StartSpawnPoint;
+    public GameObject StartSpawnPoint;
     public GameObject EndSpawnPoint;
+
+    public AnimationCurve ChanceFromDistance;
 }
