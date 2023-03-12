@@ -4,10 +4,20 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class SceneScript : MonoBehaviour
 {
     public void LoadLvL(SceneAsset Scene)
     {
        SceneManager.LoadScene(Scene.name);
+    }
+
+    public void OpenPanel (GameObject panel)
+    {
+        panel.SetActive(true);
+    }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
     }
 }
