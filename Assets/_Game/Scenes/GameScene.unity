@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17320763, g: 0.2164936, b: 0.2985254, a: 1}
+  m_IndirectSpecularColor: {r: 0.17320773, g: 0.21649434, b: 0.29852614, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1399,6 +1399,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5380029066633625021, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 2006875040}
     - target: {fileID: 5380029066633625021, guid: c30dbf592cc5c884799fef7dbc05a97a, type: 3}
       propertyPath: startPos
       value: 
@@ -4085,7 +4089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1004120375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6027,7 +6031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 126
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eead4036f8bfdc438d58f99ab209fe9, type: 2}
   m_sharedMaterial: {fileID: -5220345287228166166, guid: 8eead4036f8bfdc438d58f99ab209fe9, type: 2}

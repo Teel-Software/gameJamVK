@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CheckLanding : MonoBehaviour
 {
     [SerializeField] private Transform startPos;
-
+    [SerializeField] private TMP_Text text;
     [SerializeField] private GameObject _losePanel;
-    public GameObject PrevCollider = null;
 
     public int ScoreCount { get; private set; }
 
@@ -38,6 +38,7 @@ public class CheckLanding : MonoBehaviour
     public void MakeScorePlus()
     {
         ScoreCount++;
+        text.text = ScoreCount.ToString();
         Debug.Log(ScoreCount);
     }
 
