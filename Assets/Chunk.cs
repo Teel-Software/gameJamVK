@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,7 +9,6 @@ public class Chunk : MonoBehaviour
 {
     [SerializeField] private TableVariant[] _tables;
     [SerializeField] private TableVariant[] _tableVariants;
-    [SerializeField] private SelectRandomObject _selector;
     
     public GameObject StartSpawnPoint;
     public GameObject EndSpawnPoint;
@@ -24,6 +24,5 @@ public class Chunk : MonoBehaviour
             newTable.transform.position = pos;
             Destroy(table.gameObject);
         }
-        _selector.Clear();
     }
 }
