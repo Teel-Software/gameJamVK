@@ -1,26 +1,37 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckLanding : MonoBehaviour
 {
     [SerializeField] private Transform startPos;
-    public GameObject PrevCollider;
+    public GameObject PrevCollider = null;
 
-    // перенос телепорта
+    // РїРµСЂРµРЅРѕСЃ С‚РµР»РµРїРѕСЂС‚Р°
     public void OnWin(GameObject collider)
     {
-        startPos.position = transform.position;
+        Debug.Log("win");
+        var anch = collider.transform.Find("Anchor");
+        Debug.Log(anch);
+        if (anch != null)
+        {
+            Debug.Log("tp to anchor");
+            transform.position = anch.position;
+        }
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //startPos.position = transform.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
+        Debug.Log(gameObject.GetComponent<FlyControlling>().ToString());
         gameObject.GetComponent<FlyControlling>().enabled = false;
-        if (!PrevCollider.Equals(collider))
+        if (!collider.Equals(PrevCollider))
         PlanesGenerator.GenerateNextPanel();
         PrevCollider = collider;
     }
 
-    // перенос к телепорту
+    // РїРµСЂРµРЅРѕСЃ Рє С‚РµР»РµРїРѕСЂС‚Сѓ
     public void OnLose(GameObject collider)
     {
+        Debug.Log("lose");
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         gameObject.transform.position = startPos.position;
