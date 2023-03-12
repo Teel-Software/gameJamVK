@@ -3,25 +3,25 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class TablesRandomSpawner : MonoBehaviour
+public class ChunkRandomSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _player;
     [SerializeField] private Transform _spawnParent;
     
-    [SerializeField] private List<TableVariant> _tableVariantPrefabs = new();
+    [SerializeField] private List<Chunk> _chunkPrefabs = new();
     
-    [SerializeField] private TableVariant[] _defaultSpawnedTables;
+    [SerializeField] private Chunk[] _defaultSpawnedChunks;
     
     [SerializeField] private float _offsetX = 15f;
     
-    [Space, SerializeField] private TableVariant _emptySpaceVariant;
+    [Space, SerializeField] private Chunk _emptySpaceVariant;
     [SerializeField] private float _emptySpaceValue = 3f;
 
-    private List<TableVariant> _spawnedTables = new();
+    private List<Chunk> _spawnedChunks = new();
 
     private void Start()
     {
-        InitEmptySpaceVariant();
+        //InitEmptySpaceVariant();
 
         InitStartTables();
         Spawn();
@@ -32,12 +32,12 @@ public class TablesRandomSpawner : MonoBehaviour
         _emptySpaceVariant.StartSpawnPoint.transform.localPosition = new Vector3(_emptySpaceValue / 2, 0, 0);
         _emptySpaceVariant.EndSpawnPoint.transform.localPosition = new Vector3(-_emptySpaceValue / 2, 0, 0);
 
-        _tableVariantPrefabs.Add(_emptySpaceVariant);
+        _chunkPrefabs.Add(_emptySpaceVariant);
     }
 
     private void Update()
     {
-        var lastTableEndPosition = _spawnedTables.Last().EndSpawnPoint.transform.position;
+        var lastTableEndPosition = _spawnedChunks.Last().EndSpawnPoint.transform.position;
         if (_player.position.x < lastTableEndPosition.x + _offsetX)
         {
             Spawn();
@@ -47,27 +47,27 @@ public class TablesRandomSpawner : MonoBehaviour
 
     private void DestroyTable()
     {
-        Destroy(_spawnedTables[0].gameObject);
-        _spawnedTables.RemoveAt(0);
+        Destroy(_spawnedChunks[0].gameObject);
+        _spawnedChunks.RemoveAt(0);
     }
 
     [ContextMenu("Spawn")]
     private void Spawn()
     {
-        var newTable = Instantiate(GetRandomTableVariant(), _spawnParent);
+        var newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)]/*GetRandomTableVariant()*/, _spawnParent);
         
-        var lastTableEndPosition = _spawnedTables.Last().EndSpawnPoint.transform.position;
-        var newTableStartPosition = newTable.StartSpawnPoint.transform.localPosition;
+        var lastTableEndPosition = _spawnedChunks.Last().EndSpawnPoint.transform.position;
+        var newTableStartPosition = newChunk.StartSpawnPoint.transform.localPosition;
 
-        newTable.transform.position += lastTableEndPosition - newTableStartPosition;
-        _spawnedTables.Add(newTable);
+        newChunk.transform.position = lastTableEndPosition - newTableStartPosition;
+        _spawnedChunks.Add(newChunk);
     }
 
-    private TableVariant GetRandomTableVariant()
+    private Chunk GetRandomTableVariant()
     {
         var chances = new List<float>();
 
-        foreach (var tableVariant in _tableVariantPrefabs)
+        foreach (var tableVariant in _chunkPrefabs)
         {
             var chance = tableVariant.ChanceFromDistance.Evaluate(-_player.transform.position.x);
             chances.Add(chance);
@@ -82,18 +82,18 @@ public class TablesRandomSpawner : MonoBehaviour
 
             if (randomChance <= currentChance)
             {
-                return _tableVariantPrefabs[i];
+                return _chunkPrefabs[i];
             }
         }
 
-        return _tableVariantPrefabs[_tableVariantPrefabs.Count-1];
+        return _chunkPrefabs[_chunkPrefabs.Count-1];
     }
 
     private void InitStartTables()
     {
-        foreach (var spawnedTable in _defaultSpawnedTables)
+        foreach (var spawnedTable in _defaultSpawnedChunks)
         {
-            _spawnedTables.Add(spawnedTable);
+            _spawnedChunks.Add(spawnedTable);
         }
     }
 }
