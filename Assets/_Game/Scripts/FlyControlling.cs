@@ -22,7 +22,7 @@ public class FlyControlling : MonoBehaviour
         if ((phonePress || Input.GetMouseButton(0)) && physics.velocity.y <= 0)
         {
             text.text = "entered";
-            physics.AddForce(new Vector3(0,1f,0f), ForceMode.Impulse);
+            physics.AddForce(new Vector3(0,0.34f,0f), ForceMode.Impulse);
         }
     }
 
