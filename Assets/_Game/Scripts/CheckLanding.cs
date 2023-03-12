@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +7,13 @@ public class CheckLanding : MonoBehaviour
     [SerializeField] private Transform startPos;
     public GameObject PrevCollider = null;
 
-    // перенос телепорта
+    // РїРµСЂРµРЅРѕСЃ С‚РµР»РµРїРѕСЂС‚Р°
     public void OnWin(GameObject collider)
     {
+        var anch = collider.transform.Find("Anchor");
+        if(anch != null)
+            transform.position = anch.position;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         startPos.position = transform.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
         gameObject.GetComponent<FlyControlling>().enabled = false;
@@ -18,7 +22,7 @@ public class CheckLanding : MonoBehaviour
         PrevCollider = collider;
     }
 
-    // перенос к телепорту
+    // РїРµСЂРµРЅРѕСЃ Рє С‚РµР»РµРїРѕСЂС‚Сѓ
     public void OnLose(GameObject collider)
     {
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
