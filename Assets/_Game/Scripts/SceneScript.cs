@@ -11,11 +11,6 @@ public class SceneScript : MonoBehaviour
        SceneManager.LoadScene(Scene.name);
     }
 
-    public void SaveData( int flagZanovo)
-    {
-        PlayerPrefs.SetInt("destroy", flagZanovo);
-    }
-
     public void OpenPanel (GameObject panel)
     {
         panel.SetActive(true);
