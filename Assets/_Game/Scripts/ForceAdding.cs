@@ -33,7 +33,7 @@ public class ForceAdding : MonoBehaviour
 
     private Vector3 GetForceVector()
     {
-        var cameraVector = GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<Transform>().forward;
+        var cameraVector = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>().forward;
         var force = GetForcePercent();
         var newVector = new Vector3(50 * cameraVector.x * force,
                                     50 * force,
