@@ -20,4 +20,9 @@ public class SceneScript : MonoBehaviour
     {
         panel.SetActive(false);
     }
+    
+    public void SaveData( int flagZanovo)
+    {
+        PlayerPrefs.SetInt("destroy", flagZanovo);
+    }
 }

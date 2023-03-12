@@ -6,7 +6,7 @@ public class ForceAdding : MonoBehaviour
 {
     [SerializeField] private TrajectoryRenderer renderer;
     private float startTime;
-    private const float MAX_TIME =5;
+    private const float MAX_TIME = 1.3f;
 
     void Update()
     {
@@ -35,9 +35,9 @@ public class ForceAdding : MonoBehaviour
     {
         var cameraVector = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>().forward;
         var force = GetForcePercent();
-        var newVector = new Vector3(50 * cameraVector.x * force,
-                                    50 * force,
-                                    50 * cameraVector.z * force);
+        var newVector = new Vector3(10 * cameraVector.x * force,
+                                    10 * force,
+                                    10 * cameraVector.z * force);
         return newVector;
     }
 

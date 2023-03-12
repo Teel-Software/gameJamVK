@@ -5,8 +5,10 @@ using UnityEngine;
 public class CheckLanding : MonoBehaviour
 {
     [SerializeField] private Transform startPos;
+
+    [SerializeField] private GameObject _losePanel;
     public GameObject PrevCollider = null;
-    
+
     public int ScoreCount { get; private set; }
 
     // перенос телепорта
@@ -20,6 +22,7 @@ public class CheckLanding : MonoBehaviour
             Debug.Log("tp to anchor");
             transform.position = anch.position;
         }
+
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //startPos.position = transform.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
@@ -44,8 +47,11 @@ public class CheckLanding : MonoBehaviour
         Debug.Log("lose");
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        gameObject.transform.position = startPos.position;
-        gameObject.GetComponent<ForceAdding>().enabled = true;
+        //gameObject.transform.position = startPos.position;
+        gameObject.GetComponent<ForceAdding>().enabled = false;
         gameObject.GetComponent<FlyControlling>().enabled = false;
+        
+        _losePanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
