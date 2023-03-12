@@ -75,6 +75,8 @@ GameObject:
   - component: {fileID: 4450481798003865298}
   - component: {fileID: 7589974089867884131}
   - component: {fileID: 1857764224280242458}
+  - component: {fileID: 5054163370366276526}
+  - component: {fileID: 4592825254324607092}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -183,3 +185,33 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  Visual: {fileID: 0}
+--- !u!114 &5054163370366276526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211239329658857239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2494c34cc37005344a0f2764a7bac15b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4592825254324607092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211239329658857239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a8255bb61893f489b5f470533c8188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerZone: {fileID: 7589974089867884131}
+  _onEnteredZone:
+    m_PersistentCalls:
+      m_Calls: []
+  _color: {r: 0, g: 1, b: 0, a: 1}

@@ -6,6 +6,8 @@ public class CheckLanding : MonoBehaviour
 {
     [SerializeField] private Transform startPos;
     public GameObject PrevCollider = null;
+    
+    public int ScoreCount { get; private set; }
 
     // перенос телепорта
     public void OnWin(GameObject collider)
@@ -23,9 +25,17 @@ public class CheckLanding : MonoBehaviour
         gameObject.GetComponent<ForceAdding>().enabled = true;
         Debug.Log(gameObject.GetComponent<FlyControlling>().ToString());
         gameObject.GetComponent<FlyControlling>().enabled = false;
-        if (!collider.Equals(PrevCollider))
-        PlanesGenerator.GenerateNextPanel();
-        PrevCollider = collider;
+        //if (!collider.Equals(PrevCollider))
+        //PlanesGenerator.GenerateNextPanel();
+        //PrevCollider = collider;
+
+        MakeScorePlus();
+    }
+
+    public void MakeScorePlus()
+    {
+        ScoreCount++;
+        Debug.Log(ScoreCount);
     }
 
     // перенос к телепорту
