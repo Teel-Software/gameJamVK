@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneScript : MonoBehaviour
 {
-    public void LoadLvL(SceneAsset Scene)
+    public void LoadLvL(int scene)
     {
-       SceneManager.LoadScene(Scene.name);
+       SceneManager.LoadScene(scene);
     }
 
     public void OpenPanel (GameObject panel)
