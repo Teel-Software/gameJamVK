@@ -36,7 +36,7 @@ public class EntryZoneComponent : MonoBehaviour
     {
         if (IsZoneTrigger)
         {
-            _onEnteredZone.Invoke(other.gameObject);
+            _onEnteredZone.Invoke(gameObject);
             Debug.Log("Trigger");
         }
     }
