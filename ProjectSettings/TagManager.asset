@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Start
+  - Lose
   layers:
   - Default
   - TransparentFX
