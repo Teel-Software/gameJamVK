@@ -1388,6 +1388,8 @@ MonoBehaviour:
   _spawnParent: {fileID: 857164342}
   _chunkPrefabs:
   - {fileID: 538679584, guid: b3d0b289fd3d1404a89ab27a64741d6a, type: 3}
+  - {fileID: 538679584, guid: 2399a70008ff9ee4b8dff533f2243f63, type: 3}
+  - {fileID: 538679584, guid: cb4cbc32754938d4787364ebf2147ef4, type: 3}
   _defaultSpawnedChunks:
   - {fileID: 2103457182}
   - {fileID: 538679584}
@@ -2534,7 +2536,7 @@ GameObject:
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2550,6 +2552,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58621784795870710}
     m_Modifications:
+    - target: {fileID: 3378742373144674788, guid: 9d8a29e997b9ac2498cbc31a04fd8f97, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3410105172113810432, guid: 9d8a29e997b9ac2498cbc31a04fd8f97, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4897738589603002395, guid: 9d8a29e997b9ac2498cbc31a04fd8f97, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2824,7 +2834,7 @@ GameObject:
   m_Layer: 0
   m_Name: End
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

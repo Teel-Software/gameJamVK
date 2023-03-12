@@ -46,7 +46,7 @@ public class LongSpawner : MonoBehaviour
         var lastTableEndPosition = _spawnedObjects.Last().EndSpawnPoint.transform.position;
         var newTableStartPosition = newTable.StartSpawnPoint.transform.localPosition;
 
-        newTable.transform.position = lastTableEndPosition - newTableStartPosition;
+        newTable.transform.position = lastTableEndPosition - 3 * newTableStartPosition;
         _spawnedObjects.Add(newTable);
     }
 
