@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TablesRandomSpawner : MonoBehaviour
 {
+    [SerializeField] private Transform _player;
     [SerializeField] private Transform _spawnParent;
     [SerializeField] private TableVariant[] _tableVariantPrefabs;
     [SerializeField] private TableVariant[] _defaultSpawnedTables;
+    [SerializeField] private float _offsetX = 15f;
 
     private List<TableVariant> _spawnedTables = new();
 
@@ -16,12 +18,20 @@ public class TablesRandomSpawner : MonoBehaviour
         Spawn();
     }
 
-    private void InitStartTables()
+    private void Update()
     {
-        foreach (var spawnedTable in _defaultSpawnedTables)
+        var lastTableEndPosition = _spawnedTables.Last().EndSpawnPoint.transform.position;
+        if (_player.position.x < lastTableEndPosition.x + _offsetX)
         {
-            _spawnedTables.Add(spawnedTable);
+            Spawn();
+            DestroyTable();
         }
+    }
+
+    private void DestroyTable()
+    {
+        Destroy(_spawnedTables[0].gameObject);
+        _spawnedTables.RemoveAt(0);
     }
 
     [ContextMenu("Spawn")]
@@ -34,5 +44,13 @@ public class TablesRandomSpawner : MonoBehaviour
 
         newTable.transform.position += lastTableEndPosition - newTableStartPosition;
         _spawnedTables.Add(newTable);
+    }
+    
+    private void InitStartTables()
+    {
+        foreach (var spawnedTable in _defaultSpawnedTables)
+        {
+            _spawnedTables.Add(spawnedTable);
+        }
     }
 }
