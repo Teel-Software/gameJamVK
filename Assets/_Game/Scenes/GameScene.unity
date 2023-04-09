@@ -3584,7 +3584,10 @@ MonoBehaviour:
   - {fileID: 538679584}
   - {fileID: 1424786956}
   - {fileID: 522581647}
-  _offsetX: 30
+  _offsetDistanceToLastChunkX: 30
+  _offsetDistanceToFirstChunkX: 0
+  _minSpawnedChunks: 5
+  _maxSpawnedChunks: 7
   _emptySpaceVariant: {fileID: -7422536353257134378, guid: de16bce59ce74f34190d851a1e98bf95, type: 3}
   _emptySpaceValue: 3
 --- !u!4 &956073474
