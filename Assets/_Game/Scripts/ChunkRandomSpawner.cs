@@ -7,13 +7,16 @@ public class ChunkRandomSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _player;
     [SerializeField] private Transform _spawnParent;
-    
+
     [SerializeField] private List<Chunk> _chunkPrefabs = new();
-    
+
     [SerializeField] private Chunk[] _defaultSpawnedChunks;
-    
-    [SerializeField] private float _offsetX = 15f;
-    
+
+    [SerializeField] private float _offsetDistanceToLastChunkX = 15f;
+    [SerializeField] private float _offsetDistanceToFirstChunkX = 5f;
+    [SerializeField] private int _minSpawnedChunks = 5;
+    [SerializeField] private int _maxSpawnedChunks = 10;
+
     [Space, SerializeField] private Chunk _emptySpaceVariant;
     [SerializeField] private float _emptySpaceValue = 3f;
 
@@ -38,11 +41,17 @@ public class ChunkRandomSpawner : MonoBehaviour
     private void Update()
     {
         var lastTableEndPosition = _spawnedChunks.Last().EndSpawnPoint.transform.position;
-        if (_player.position.x < lastTableEndPosition.x + _offsetX)
+        var firstTableStartPosition = _spawnedChunks.First().StartSpawnPoint.transform.position;
+
+        if (_player.position.x < lastTableEndPosition.x + _offsetDistanceToLastChunkX)
         {
             Spawn();
-            DestroyTable();
         }
+
+        if (_spawnedChunks.Count > _maxSpawnedChunks ||
+            (_spawnedChunks.Count > _minSpawnedChunks &&
+             _player.position.x > firstTableStartPosition.x + _offsetDistanceToFirstChunkX)) // нихера не работает эта строка. лень разбираться
+            DestroyTable();
     }
 
     private void DestroyTable()
@@ -54,8 +63,9 @@ public class ChunkRandomSpawner : MonoBehaviour
     [ContextMenu("Spawn")]
     private void Spawn()
     {
-        var newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)]/*GetRandomTableVariant()*/, _spawnParent);
-        
+        var newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)] /*GetRandomTableVariant()*/,
+            _spawnParent);
+
         var lastTableEndPosition = _spawnedChunks.Last().EndSpawnPoint.transform.position;
         var newTableStartPosition = newChunk.StartSpawnPoint.transform.localPosition;
 
@@ -75,7 +85,7 @@ public class ChunkRandomSpawner : MonoBehaviour
 
         var randomChance = Random.Range(0, chances.Sum());
         var currentChance = 0f;
-        
+
         for (int i = 0; i < chances.Count; i++)
         {
             currentChance += chances[i];
@@ -86,7 +96,7 @@ public class ChunkRandomSpawner : MonoBehaviour
             }
         }
 
-        return _chunkPrefabs[_chunkPrefabs.Count-1];
+        return _chunkPrefabs[_chunkPrefabs.Count - 1];
     }
 
     private void InitStartTables()
