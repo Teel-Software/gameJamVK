@@ -62,5 +62,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 
-*.dwlt
-*.dwlt
+UserSettings/Layouts/*.dwlt
