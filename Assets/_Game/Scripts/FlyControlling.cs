@@ -1,16 +1,19 @@
-using System;
+﻿using System;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlyControlling : MonoBehaviour
 {
     private Rigidbody physics;
-    private bool isDoubleJumpPressed = false;
+    public bool isDoubleJumpPressed;
 
     private float startTime;
     private const float MAX_TIME = 5;
+
+    private bool pausePressed;
 
     private void Start()
     {
@@ -19,7 +22,20 @@ public class FlyControlling : MonoBehaviour
 
     private void OnEnable()
     {
+        
         isDoubleJumpPressed = false;
+    }
+
+    // AnesVijay: ChangePauseButtonToPressed и ChangePauseButtonToUnpressed нужны для того, чтобы не срабатывал двойной прыжок при нажатии на паузу,
+    // переменная pausePressed служит для этого флагом
+    public void ChangePauseButtonToPressed()
+    {
+        pausePressed = true;
+    }
+
+    public void ChangePauseButtonToUnpressed()
+    {
+        pausePressed = false;
     }
 
     void Update()
@@ -31,7 +47,7 @@ public class FlyControlling : MonoBehaviour
         //}
 
         bool phonePress = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
-        if ((phonePress || Input.GetMouseButtonDown(0)) && !isDoubleJumpPressed)
+        if ((phonePress || Input.GetMouseButtonDown(0)) && !isDoubleJumpPressed && !pausePressed)
         {
             if(physics.velocity.y < 0)
                 physics.velocity = new Vector3(physics.velocity.x, 0f, physics.velocity.z);

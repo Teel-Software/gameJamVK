@@ -27,7 +27,11 @@ public class CheckLanding : MonoBehaviour
         //startPos.position = transform.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
         Debug.Log(gameObject.GetComponent<FlyControlling>().ToString());
+
+        // AnesVijay: 32 строку трогать не стал, добавил 33-ю, чтобы двойной прыжок перезаряжался при приземлении в тостер.
+        // Также переменную isDoubleJumpPressed сделал публичной, чтобы тут так можно было пробросить
         gameObject.GetComponent<FlyControlling>().enabled = false;
+        gameObject.GetComponent<FlyControlling>().isDoubleJumpPressed = false;
         //if (!collider.Equals(PrevCollider))
         //PlanesGenerator.GenerateNextPanel();
         //PrevCollider = collider;
