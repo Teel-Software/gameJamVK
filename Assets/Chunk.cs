@@ -14,15 +14,28 @@ public class Chunk : MonoBehaviour
     public GameObject EndSpawnPoint;
 
     public AnimationCurve ChanceFromDistance;
-    
-    private void Start()
+
+    public void ReplacePrefabInChunk()
     {
-        foreach (var table in _tables)
+        Vector3 lastTableEndPosition;
+
+        for (var i = 1; i < _tables.Length; i++)
         {
-            var pos = table.transform.position;
+            var replaceableTable = _tables[i];
+            var previousTable = _tables[i-1];
+            
             var newTable = Instantiate(_tableVariants[Random.Range(0, _tableVariants.Length)], transform);
-            newTable.transform.position = pos;
-            Destroy(table.gameObject);
+
+            lastTableEndPosition = previousTable.EndSpawnPoint.transform.position;
+            var newTableStartPosition = newTable.StartSpawnPoint.transform.localPosition;
+
+            newTable.transform.position = lastTableEndPosition - newTableStartPosition;
+            Destroy(replaceableTable.gameObject);
+
+            _tables[i] = newTable;
         }
+        
+        lastTableEndPosition = _tables[^1].EndSpawnPoint.transform.position;
+        EndSpawnPoint.transform.position = lastTableEndPosition;
     }
 }

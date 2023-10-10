@@ -65,12 +65,19 @@ public class ChunkRandomSpawner : MonoBehaviour
     {
         var newChunk = Instantiate(_chunkPrefabs[Random.Range(0, _chunkPrefabs.Count)] /*GetRandomTableVariant()*/,
             _spawnParent);
+        
+        newChunk.ReplacePrefabInChunk();
 
-        var lastTableEndPosition = _spawnedChunks.Last().EndSpawnPoint.transform.position;
+        UpdatePosition(newChunk, _spawnedChunks.Last());
+        _spawnedChunks.Add(newChunk);
+    }
+
+    private void UpdatePosition(Chunk newChunk, Chunk lastChunk)
+    {
+        var lastTableEndPosition = lastChunk.EndSpawnPoint.transform.position;
         var newTableStartPosition = newChunk.StartSpawnPoint.transform.localPosition;
 
         newChunk.transform.position = lastTableEndPosition - newTableStartPosition;
-        _spawnedChunks.Add(newChunk);
     }
 
     private Chunk GetRandomTableVariant()
@@ -101,9 +108,17 @@ public class ChunkRandomSpawner : MonoBehaviour
 
     private void InitStartTables()
     {
-        foreach (var spawnedTable in _defaultSpawnedChunks)
+        for (var i = 0; i < _defaultSpawnedChunks.Length; i++)
         {
+            var spawnedTable = _defaultSpawnedChunks[i];
             _spawnedChunks.Add(spawnedTable);
+            spawnedTable.ReplacePrefabInChunk();
+
+            if (i > 0)
+            {
+                var prevChunk = _defaultSpawnedChunks[i-1];
+                UpdatePosition(spawnedTable, prevChunk);
+            }
         }
     }
 }

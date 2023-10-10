@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using System;
+using UnityEngine;
 
 public class TableVariant : MonoBehaviour
 {
@@ -8,5 +8,5 @@ public class TableVariant : MonoBehaviour
 
     public AnimationCurve ChanceFromDistance;
 
-    [FormerlySerializedAs("_visual")] public GameObject Visual;
+    public GameObject Visual;
 }

@@ -23,7 +23,7 @@ public class CheckLanding : MonoBehaviour
             transform.position = anch.position;
         }
 
-        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero * 5;
         //startPos.position = transform.position;
         gameObject.GetComponent<ForceAdding>().enabled = true;
         Debug.Log(gameObject.GetComponent<FlyControlling>().ToString());
